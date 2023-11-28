@@ -2,7 +2,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { PiHouseLineDuotone } from "react-icons/pi";
-import { TbBrandBooking } from "react-icons/tb";
+import { FaTasks } from "react-icons/fa";
+import { FaUsersGear } from "react-icons/fa6";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 
 const DashSideBar = () => {
@@ -13,18 +14,18 @@ const DashSideBar = () => {
       icon: <SiHomeassistantcommunitystore />,
     },
     {
-      label: "Room",
-      link: "/dashboard",
-      icon: <PiHouseLineDuotone />,
+      label: "Tasks",
+      link: "/dashboard/task",
+      icon: <FaTasks />,
     },
     {
-      label: "Booking",
-      link: "/dashboard/booking",
-      icon: <TbBrandBooking />,
+      label: "Users",
+      link: "/dashboard/users",
+      icon:<FaUsersGear />,
     },
   ];
   return (
-    <div className="h-screen bg-dark-blue text-white">
+    <div className="h-screen bg-black text-white">
       <div className="flex flex-col pl-10 pr-10 pt-40">
         {sidebar.map((item, index) => {
           return (

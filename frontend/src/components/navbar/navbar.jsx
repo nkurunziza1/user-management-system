@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import getUserInfo from "../../utils/getUserInfo";
 
 const Navbar = () => {
   const [isToken, setIsToken] = useState(!!localStorage.getItem("token"));
-  const [isUserInfo, setUserInfo] = useState()
+  const [isSuperAdmin, setIsSuperAdmin] = useState(false); // Set initial state to false
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -11,12 +12,29 @@ const Navbar = () => {
     setIsToken(false);
     navigate("/");
   };
- 
+
+  const getInfo = async () => {
+    try {
+      const user = await getUserInfo();
+      return user;
+    } catch (error) {
+      console.error("Error getting user info:", error);
+      return null;
+    }
+  };
+  
   useEffect(() => {
-    setUserInfo(user)
+    const fetchData = async () => {
+      const user = await getInfo();
+      if (user && user.email === "super@task.rw") {
+        setIsSuperAdmin(true);
+      }
+    };
+
+    fetchData();
     const hasToken = localStorage.getItem("token");
     setIsToken(!!hasToken);
-  }, []);
+  }, [])
 
   return (
     <nav className="bg-gray-800 p-4">
@@ -27,18 +45,27 @@ const Navbar = () => {
           </span>
         </Link>
         <div className="flex gap-4">
-        <Link to="/">
-            <button className=" hover:blue-600 text-white font-bold py-2 px-4 rounded">
+          <Link to="/">
+            <button className="hover:blue-600 text-white font-bold py-2 px-4 rounded">
               Home
             </button>
           </Link>
           {isToken ? (
-            <button
-              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
+            <>
+              {isSuperAdmin && ( // Show the Dashboard link only for superAdmin
+                <Link to="/dashboard">
+                  <button className="hover:blue-600 text-white font-bold py-2 px-4 rounded">
+                    Dashboard
+                  </button>
+                </Link>
+              )}
+              <button
+                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </>
           ) : (
             <div className="flex gap-4">
               <Link to="/login">
@@ -53,7 +80,6 @@ const Navbar = () => {
               </Link>
             </div>
           )}
-
         </div>
       </div>
     </nav>

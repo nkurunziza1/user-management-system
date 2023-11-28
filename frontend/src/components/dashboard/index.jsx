@@ -1,17 +1,16 @@
-import React from 'react';
-import DashNavbar from './sidebar/DashboardNavbar';
-import DashSideBar from './navbar/DashboardNavbar';
+import React from "react";
+import DashNavbar from "./sidebar/DashboardNavbar";
+import DashSideBar from "./navbar/DashboardNavbar";
+import { Outlet } from "react-router-dom";
 
-const Dashboard = ({children}) => {
+const Dashboard = ({ children }) => {
   return (
-    <div className='flex '>
-      <DashSideBar />
+    <div className="flex ">
       <div>
-        <DashNavbar />
-       {children}
+        <Outlet />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

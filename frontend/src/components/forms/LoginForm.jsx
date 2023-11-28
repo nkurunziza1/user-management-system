@@ -7,7 +7,7 @@ import { loginSchema } from "../validation/InputValidation";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import getUserInfo from "../../utils/userInfo";
+
 
 
 const LoginForm = () => {
@@ -18,7 +18,7 @@ const LoginForm = () => {
   } = useForm({ resolver: yupResolver(loginSchema) });
 
   const navigate = useNavigate();
-  const user = getUserInfo();
+
   const getErrorMsg = (error) => {
     if (error.response) {
       return error.response.data.message;
