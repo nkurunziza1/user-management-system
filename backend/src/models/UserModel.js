@@ -15,6 +15,25 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    role: {
+      type: String,
+      default: "assignee"
+    },
+    isEmailVerified: {
+      type:Boolean,
+      default:false
+    },
+    profilePic: {
+      type: String,
+      default: 'https://res.cloudinary.com/dd92qmql1/image/upload/v1688126539/DEV/user_3_nec6s8.png',
+    },
+    gender: {
+      type: String,
+    },
+    phoneNumber: {
+      type: String,
+    },
+    
   },
   { timeStamps: true }
 );

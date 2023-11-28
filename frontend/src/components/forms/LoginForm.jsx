@@ -6,7 +6,9 @@ import { useForm } from "react-hook-form";
 import { loginSchema } from "../validation/InputValidation";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import getUserInfo from "../../utils/userInfo";
+
 
 const LoginForm = () => {
   const {
@@ -16,7 +18,7 @@ const LoginForm = () => {
   } = useForm({ resolver: yupResolver(loginSchema) });
 
   const navigate = useNavigate();
-
+  const user = getUserInfo();
   const getErrorMsg = (error) => {
     if (error.response) {
       return error.response.data.message;
@@ -34,7 +36,15 @@ const LoginForm = () => {
       );
 
       localStorage.setItem("token", response.data.token);
-      navigate("/product");
+      if(response.data.existingUser.role === "superAdmin"){
+        navigate("/dashboard");
+      }else{
+        navigate("/");  
+        window.location.reload();
+      }
+      
+     
+  
       return response;
     } catch (error) {
       console.log("Errorr ======>", error);
@@ -67,7 +77,8 @@ const LoginForm = () => {
           {...register("password")}
           error={errors?.password}
         />
-        <Button label="Button" type="submit" className="" />
+        <Button label="Login" type="submit" className="" />
+        <Link to="/auth/reset-password" className="text-blue-500">Forget Password</Link>
       </form>
       <Toaster />
     </div>

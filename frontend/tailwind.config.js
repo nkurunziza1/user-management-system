@@ -12,7 +12,11 @@ export default {
         mdl: { max: "1024px" },
         laptop: { max: "1165px" },
       },
+      backgroundImage:{
+        'home':"linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/image/task.jpg')",
+      }
     },
+
   },
   plugins: [],
 };

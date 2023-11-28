@@ -7,7 +7,7 @@ function Button({ parentClass, ...props }) {
         type={props.type}
         onClick={props.onClick}
         disabled={props.disabled}
-        className={`w-[80px] m-auto my-2 h-[45px] rounded-md  py-2 px-3 text-sm font-semibold hover:bg-green-300 ${props.className}`}
+        className={`w-[80px] m-auto my-2 h-[45px] rounded-md bg-green-700 transition-all 1s ease-in-out   py-2 px-3 text-sm font-semibold hover:bg-green-300 ${props.className}`}
       >
         {props.label}
         {props.children}

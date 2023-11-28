@@ -71,7 +71,7 @@ const SignupForm = () => {
           {...register("password")}
           error={errors?.password}
         />
-        <Button label="Button" type="submit" className="" />
+        <Button label="Signup" type="submit" className="" />
       </form>
       <Toaster />
     </div>
