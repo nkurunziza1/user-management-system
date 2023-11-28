@@ -17,6 +17,8 @@ import { ForgetPassword } from "./components/forms/ForgetPassword.jsx";
 import ResetPasswordForm from "./components/forms/ResetPassword.jsx";
 import Dashboard from "./components/dashboard/index.jsx";
 import DashboardHome from "./components/dashboard/DashboardHome/DashboardHome.jsx";
+import GetAllTask from "./components/dashboard/tasks/getallTask.jsx";
+import GetAllusers from "./components/dashboard/users/getAllusers.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +37,8 @@ const router = createBrowserRouter(
         {/* Your nested routes for the dashboard go here */}
         {/* For example: */}
         <Route index={true} path="" element={<DashboardHome />} />
+        <Route  path="task" element={<GetAllTask />} />
+        <Route  path="users" element={<GetAllusers  />} />
       </Route>
       <Route path="/*" element={<NotFound />} />
     </Route>

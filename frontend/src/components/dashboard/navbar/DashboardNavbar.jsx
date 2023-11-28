@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { PiHouseLineDuotone } from "react-icons/pi";
 import { FaTasks } from "react-icons/fa";
 import { FaUsersGear } from "react-icons/fa6";
+import { BiSolidDashboard } from "react-icons/bi";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 
 const DashSideBar = () => {
@@ -12,6 +13,11 @@ const DashSideBar = () => {
       label: "Home",
       link: "/",
       icon: <SiHomeassistantcommunitystore />,
+    },
+    {
+      label: "Dashboard",
+      link: "/dashboard",
+      icon: <BiSolidDashboard />,
     },
     {
       label: "Tasks",
@@ -26,7 +32,7 @@ const DashSideBar = () => {
   ];
   return (
     <div className="h-screen bg-black text-white">
-      <div className="flex flex-col pl-10 pr-10 pt-40">
+      <div className="flex flex-col text-md pl-10 gap-10 font-bold pr-10 pt-40">
         {sidebar.map((item, index) => {
           return (
             <div key={index} className="flex items-center gap-4">
