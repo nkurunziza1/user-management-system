@@ -4,7 +4,7 @@ import extractToken from "../services/security.service.js";
 
 
 const router = express.Router();
-router.post("/create",extractToken, createProject);
+router.post("/create", createProject);
 router.get("/",extractToken, getAllProject)
 
 export default router

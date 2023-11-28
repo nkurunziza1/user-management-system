@@ -52,7 +52,18 @@ export const ForgetPasswordSchema = yup.object().shape({
   email: yup.string().email().lowercase().trim().required(),
 });
 
-export const TaskFormSchema = yup.object().shape({
-  taskName: yup.string().min(4, "Task name is required "),
-  description: yup.string().min(4, "Description is required "),
+export const ProjectSchema = yup.object().shape({
+  name: yup.string().min(4, "Project name is required "),
+});
+
+export const TaskSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(4, "Task name is required")
+    .required("Task name is required"),
+  assignee: yup.string().required("Assignee is required"),
+  startDate: yup.date().required("Start date is required"),
+  endDate: yup.date().required("End date is required"),
+  priority: yup.string().required("Priority is required"),
+  project: yup.string().required("Project name is required"),
 });

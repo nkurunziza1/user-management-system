@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
     <div className="flex">
       <div className="flex flex-col w-full">
-        <div className="flex justify-center bg-red-400 items-center flex-1 p-4">
+        <div className="flex justify-center w-[80%]  items-center flex-1 p-4">
           <Outlet />
         </div>
       </div>

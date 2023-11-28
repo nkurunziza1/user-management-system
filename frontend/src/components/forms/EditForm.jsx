@@ -3,7 +3,7 @@ import InputField from "./InputField";
 import Button from "./Button";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { TaskFormSchema } from "../validation/InputValidation";
+import { TaskSchema } from "../validation/InputValidation";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
