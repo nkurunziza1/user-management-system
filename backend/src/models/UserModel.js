@@ -17,15 +17,16 @@ const UserSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: "assignee"
+      default: "assignee",
     },
     isEmailVerified: {
-      type:Boolean,
-      default:false
+      type: Boolean,
+      default: true,
     },
     profilePic: {
       type: String,
-      default: 'https://res.cloudinary.com/dd92qmql1/image/upload/v1688126539/DEV/user_3_nec6s8.png',
+      default:
+        "https://res.cloudinary.com/dd92qmql1/image/upload/v1688126539/DEV/user_3_nec6s8.png",
     },
     gender: {
       type: String,
@@ -33,9 +34,8 @@ const UserSchema = new mongoose.Schema(
     phoneNumber: {
       type: String,
     },
-    
   },
-  { timeStamps: true }
+  { timestamps: true }
 );
 
 export default mongoose.model("User", UserSchema);

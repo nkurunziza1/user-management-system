@@ -5,8 +5,13 @@ export const createProject = async (req, res) => {
   try {
     const { name } = req.body;
     const existName = await Projects.findOne({ name });
+    // if (existName.role !== "superAdmin") {
+    //   return res
+    //     .status(401)
+    //     .json({ message: "only superAdmin can create a project" });
+    // }
     if (existName) {
-      return res.status(302).json({ message: "Project already exist🔥" });
+      return res.status(401).json({ message: "Project already exist🔥" });
     }
     const project = await Projects.create({
       name,

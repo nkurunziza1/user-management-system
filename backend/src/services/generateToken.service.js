@@ -12,17 +12,6 @@ const verifyToken = (token) => {
   
 };
 
-// const verifyToken = (token) => {
-//     try {
-//       const obj = Jwt.verify(token, process.env.JWT_SECRET, {
-//         expiresIn: "1hr"
-//       });
-//       return obj;
-//     } catch (error) {
-//       console.error("Error verifying token:", error.message);
-//       return null;
-//     }
-//   };
   
 
 const checkToken = (token, env) => {

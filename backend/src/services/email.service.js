@@ -23,7 +23,7 @@ export const sendEmailService = (sendToEmail, subject, HTMLText) => {
 };
 
 export const sendVerificationEmail = async (email, fullname, token) => {
-    const link = `${process.env.APP_URL}/auth/verify?token=${token}`;
+    const link = `${process.env.APP_URL}/auth/verify/${token}`;
     const msg = {
       to: email,
       from: {

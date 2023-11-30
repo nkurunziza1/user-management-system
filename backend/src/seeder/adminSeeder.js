@@ -1,5 +1,4 @@
-
-import bcrypt from "bcryptjs"
+import bcrypt from "bcryptjs";
 import { generateToken } from "../services/generateToken.service.js";
 import User from "../models/UserModel.js";
 
@@ -7,7 +6,9 @@ const adminSeeder = async () => {
   try {
     const adminUser = await User.findOne({ fullname: "super admin" });
     if (adminUser) {
-      console.log("Admin user is connected!");
+      console.log(
+        "An admin user is registered; now, you can perform all operations with the account.!"
+      );
       return;
     }
 

@@ -1,10 +1,13 @@
-
 import mongoose from "mongoose";
 
-const taskSchema = mongoose.Schema({
+const taskSchema = new mongoose.Schema({
   name: {
     type: String,
     unique: true,
+  },
+  spec: {
+    type: String,
+    default: null
   },
   startDate: {
     type: Date,
@@ -15,35 +18,27 @@ const taskSchema = mongoose.Schema({
     required: true,
   },
   assignee: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', 
+    type: Array ,
     required: true,
   },
   project: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Project', 
+    type: Array,
     required: true,
   },
-  description: {
-    type:String,
-    required: true
-  },
+
   priority: {
     type: String,
     enum: ["Low", "Medium", "High"],
-    required: true
+    required: true,
   },
   status: {
-   type: String,
-   default: "ongoing"
-
-  },
-  attachment: {
     type: String,
-    required: true
-  }
-});
+    default: "ongoing",
+  },
+  // attachment: {
+  //   type: String,
+  //   required: true,
+  // },
+},{ timestamps: true });
 
-export default mongoose.model('Task', taskSchema);
-
-
+export default mongoose.model("Task", taskSchema);

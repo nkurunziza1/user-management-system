@@ -25,7 +25,7 @@ const signup = async (req, res) => {
     const userData = {
       email,
       fullname,
-      role
+      
     };
     const token = generateToken(userData, { expiresIn: process.env.EXPIRED });
     await sendVerificationEmail(email, fullname, token);
